@@ -5,7 +5,7 @@ namespace DNADesign\SubsitesDefaultEmails\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 
-/* Adds a DefaultEmailExtension field to the Subsite DataObject */
+/* Adds a DefaultFromEmail field to the Subsite DataObject */
 
 class DefaultEmailExtension extends DataExtension
 {
