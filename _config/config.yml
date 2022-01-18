@@ -1,0 +1,12 @@
+---
+Name: subsitedefaultemailconfig
+Before:
+  - coreconfig
+---
+SilverStripe\Subsites\Model\Subsite:
+  extensions:
+    - DNADesign\SubsitesDefaultEmails\Extension\DefaultEmailExtension
+
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Control\Email\Email:
+    class: DNADesign\SubsitesDefaultEmails\Control\Email\Email

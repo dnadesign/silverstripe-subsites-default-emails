@@ -1,0 +1,8 @@
+{
+    "name": "dnadesign/silverstripe-subsites-default-emails",
+    "description": "Allows the default 'from' email to be set on a per subsite basis",
+    "license": "BSD-3-Clause",
+    "extra": {
+        "installer-name": "dnadesign/silverstripe-subsites-default-emails"
+    }
+}

@@ -1,1 +1,1 @@
-# silverstripe-subsites-default-emails
+# SilverStripe Subsites Default Emails
