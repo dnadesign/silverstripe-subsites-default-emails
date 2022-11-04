@@ -2,10 +2,12 @@
 
 namespace DNADesign\SubsitesDefaultEmails\Control\Email;
 
+use DateTime;
 use SilverStripe\Control\Email\Email as CoreEmail;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\Subsites\Model\Subsite;
 use Swift_Message;
+use Swift_Mime_SimpleMessage;
 
 /**
  * This class is used to override the setSwiftMessage function
@@ -25,7 +27,10 @@ class Email extends CoreEmail
     public function getSwiftMessage()
     {
         if (!$this->swiftMessage) {
-            $this->setSwiftMessage(new Swift_Message(null, null, 'text/html', 'utf-8'));
+            $message = new Swift_Message(null, null, 'text/html', 'utf-8');
+            // Set priority to fix PHP 8.1 SimpleMessage::getPriority() sscanf() null parameter
+            $message->setPriority(Swift_Mime_SimpleMessage::PRIORITY_NORMAL);
+            $this->setSwiftMessage($message);
         }
 
         return $this->swiftMessage;
@@ -38,7 +43,9 @@ class Email extends CoreEmail
      */
     public function setSwiftMessage($swiftMessage)
     {
-        $swiftMessage->setDate(DBDatetime::now()->getTimestamp());
+        $dateTime = new DateTime();
+        $dateTime->setTimestamp(DBDatetime::now()->getTimestamp());
+        $swiftMessage->setDate($dateTime);
         if (!$swiftMessage->getFrom()) {
             $defaultFrom = $this->config()->get('admin_email');
 
