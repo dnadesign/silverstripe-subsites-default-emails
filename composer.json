@@ -4,5 +4,9 @@
     "license": "BSD-3-Clause",
     "extra": {
         "installer-name": "dnadesign/silverstripe-subsites-default-emails"
+    },
+    "require": {
+        "silverstripe/cms": "^5",
+        "silverstripe/subsites": "^3"
     }
 }
