@@ -7,6 +7,6 @@ SilverStripe\Subsites\Model\Subsite:
   extensions:
     - DNADesign\SubsitesDefaultEmails\Extension\DefaultEmailExtension
 
-SilverStripe\Control\Email\Email:
+SilverStripe\Control\Email\MailerSubscriber:
   extensions:
-    - DNADesign\SubsitesDefaultEmails\Extension\EmailExtension
+    - DNADesign\SubsitesDefaultEmails\Extension\MailSubscriberExtension
