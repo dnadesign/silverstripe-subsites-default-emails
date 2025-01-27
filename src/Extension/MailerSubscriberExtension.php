@@ -15,7 +15,7 @@ class MailerSubscriberExtension extends Extension
      */
     public function updateOnMessage($email)
     {
-        $envEmail = Environment::getEnv('SS_EMAIL_SEND_ALL_FROM');
+        $envEmail = Environment::getEnv('SS_SEND_ALL_EMAILS_FROM');
         $subsite = Subsite::currentSubsite();
 
         if ($subsite && trim($subsite->DefaultFromEmail) ?? '') {

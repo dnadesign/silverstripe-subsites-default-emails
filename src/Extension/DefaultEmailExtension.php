@@ -25,7 +25,7 @@ class DefaultEmailExtension extends Extension
     public function updateCMSFields(FieldList $fields)
     {
         $adminEmail = Config::inst()->get(Email::class, 'admin_email') ?? '-- not set --';
-        $envEmail = Environment::getEnv('SS_EMAIL_SEND_ALL_FROM');
+        $envEmail = Environment::getEnv('SS_SEND_ALL_EMAILS_FROM');
         $finalEmail = $envEmail ?? $adminEmail;
 
         $emailField = EmailField::create('DefaultFromEmail')->setDescription(
@@ -36,8 +36,12 @@ class DefaultEmailExtension extends Extension
         $fields->addFieldToTab('Root.Main', $emailField, 'Language');
 
         if ($envEmail) {
-            $override = CheckboxField::create('BypassEnvironment')->setDescription('Bypass SS_EMAIL_SEND_ALL_FROM ('.$envEmail.') and use "Default From Email" on this subsite');
+            $override = CheckboxField::create('BypassEnvironment')->setDescription(
+                'Bypass SS_SEND_ALL_EMAILS_FROM ('.$envEmail.') and use "Default From Email" on this subsite'
+            );
             $fields->addFieldToTab('Root.Main', $override, 'Language');
+        } else {
+            $fields->removeByName('BypassEnvironment');
         }
     }
 }
