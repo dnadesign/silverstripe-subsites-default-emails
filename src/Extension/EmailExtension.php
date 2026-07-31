@@ -12,7 +12,7 @@ class EmailExtension extends Extension
     /**
      * Update $defaultFrom variable if $subsite->DefaultFromEmail has been set
      */
-    public function updateDefaultFrom(&$defaultFrom)
+    protected function updateDefaultFrom(&$defaultFrom)
     {
         $subsite = Subsite::currentSubsite();
         if ($subsite && trim($subsite->DefaultFromEmail) ?? '') {

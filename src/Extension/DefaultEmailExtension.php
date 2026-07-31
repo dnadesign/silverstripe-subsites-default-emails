@@ -13,14 +13,14 @@ use SilverStripe\Subsites\Model\Subsite;
 
 class DefaultEmailExtension extends Extension
 {
-    private static $db = [
+    private static array $db = [
         'DefaultFromEmail' => 'Varchar'
     ];
 
     /**
      * Update Fields
      */
-    public function updateCMSFields(FieldList $fields)
+    protected function updateCMSFields(FieldList $fields)
     {
         $adminEmail = Config::inst()->get(Email::class, 'admin_email') ?? '-- not set --';
 
