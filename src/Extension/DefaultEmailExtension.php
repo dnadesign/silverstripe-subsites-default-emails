@@ -9,8 +9,11 @@ use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Subsites\Model\Subsite;
 
-/* Adds a DefaultFromEmail field to the Subsite DataObject */
-
+/**
+ * Adds a DefaultFromEmail field to the Subsite DataObject
+ *
+ * @extends Extension<Subsite>
+ */
 class DefaultEmailExtension extends Extension
 {
     private static array $db = [
@@ -20,13 +23,17 @@ class DefaultEmailExtension extends Extension
     /**
      * Update Fields
      */
-    protected function updateCMSFields(FieldList $fields)
+    protected function updateCMSFields(FieldList $fields): void
     {
         $adminEmail = Config::inst()->get(Email::class, 'admin_email') ?? '-- not set --';
 
+        if (is_array($adminEmail)) {
+            $adminEmail = implode(', ', $adminEmail);
+        }
+
         $emailField = EmailField::create('DefaultFromEmail')->setDescription(
-            'This field can be used to set the default "From" address for emails sent from this subsite. <br>
-            If not set, defaults to '.$adminEmail
+            'This field can be used to set the default "From" address for emails sent from this subsite. <br>'
+            . 'If not set, defaults to '.$adminEmail
         );
 
         if (Subsite::currentSubsite()) {
