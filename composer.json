@@ -6,7 +6,7 @@
         "installer-name": "dnadesign/silverstripe-subsites-default-emails"
     },
     "require": {
-        "silverstripe/cms": "^5",
-        "silverstripe/subsites": "^3"
+        "silverstripe/cms": "^6",
+        "silverstripe/subsites": "^4"
     }
 }
