@@ -8,5 +8,10 @@
     "require": {
         "silverstripe/cms": "^6",
         "silverstripe/subsites": "^4"
+    },
+    "autoload": {
+      "psr-4": {
+        "DNADesign\\SubsitesDefaultEmails\\": "src/"
+      }
     }
 }
