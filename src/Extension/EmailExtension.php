@@ -19,7 +19,7 @@ class EmailExtension extends Extension
     protected function updateDefaultFrom(string &$defaultFrom): void
     {
         $subsite = Subsite::currentSubsite();
-        if ($subsite && trim($subsite->DefaultFromEmail)) {
+        if ($subsite && trim((string)$subsite->DefaultFromEmail)) {
             $defaultFrom = $subsite->DefaultFromEmail;
         }
     }
